@@ -12,8 +12,10 @@ var makeMove = function(algo, skill=3) {
     var move = calcBestMoveOne(game.turn());
   } else if (algo === 3) {
     var move = calcBestMoveNoAB(skill, game, game.turn())[1];
-  } else {
+  } else if (algo === 4) {
     var move = calcBestMove(skill, game, game.turn())[1];
+  } else {
+    var move = calcBestMove_EVAL3(skill, game, game.turn())[1];
   }
   // Make the calculated move
   game.move(move);
@@ -22,12 +24,13 @@ var makeMove = function(algo, skill=3) {
 }
 
 // Computer vs Computer
-var playGame = function(algo=4, skillW=2, skillB=2) {
+var playGame = function(algoW=4, algoB=5, skillW=2, skillB=2) {
   if (game.game_over() === true) {
     console.log('game over');
     return;
   }
   var skill = game.turn() === 'w' ? skillW : skillB;
+  var algo = game.turn() === 'w' ? algoW : algoB;
   makeMove(algo, skill);
   window.setTimeout(function() {
     playGame(algo, skillW, skillB);
