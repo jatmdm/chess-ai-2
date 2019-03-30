@@ -5,8 +5,8 @@ var board,
 var onMoveEnd = function(oldPos, newPos) {
   // Alert if game is over
   if (game.game_over() === true) {
-    alert('Game Over');
-    console.log('Game Over');
+    //alert('Game Over');
+    //console.log('Game Over');
   }
 
   // Log the current game position

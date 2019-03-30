@@ -26,9 +26,13 @@ var makeMove = function(algo, skill=3) {
 }
 
 // Computer vs Computer
-var playGame = function(algoW=4, algoB=5, skillW=2, skillB=2) {
+var playGame = function(algoW, algoB, skillW, skillB) {
   if (game.game_over() === true) {
-    console.log('game over');
+    outcome = "";
+    if (game.in_stalemate()) outcome = "stalemate";
+    else if (game.in_checkmate()) outcome = "checkmate";
+    else if (game.in_draw()) outcome = "draw";
+    console.log(game.game_over() + " | "  + outcome + " | " + game.turn());
     return;
   }
   var skill = game.turn() === 'w' ? skillW : skillB;
