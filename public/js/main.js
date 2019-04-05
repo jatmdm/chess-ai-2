@@ -40,7 +40,7 @@ var playGame = function(algoW, algoB, skillW, skillB) {
   makeMove(algo, skill);
   window.setTimeout(function() {
     playGame(algo, skillW, skillB);
-  }, 250);
+  }, 1);
 };
 
 // Handles what to do after human makes move.
